@@ -1,67 +1,21 @@
-// * Commencement d'elements dynamiques 
 
-const reactDescriptions = ['Fundamental', ' Crucial', 'Core', 'Important', 'Useful'];
-
-function generationNombreRandom(max){
-    return Math.floor(Math.random()*(max+1));
-}
-// Dans l'element statique (Ici Header) {} pour mettre un element dynamique
-// 
-// * 
+import Header from './components/Header/Header.jsx';
+import ConceptImportant from './components/Conceptes/ConceptImp1.jsx';
+import ConceptImportantOptimiser from './components/Conceptes/ConceptImp2.jsx';
+import TabBouton from './components/TABBoutons/TABBoutons.jsx';
 
 // ** Un meilleur moyen de load des images 
-
 // Chargement d'une image. Le src = "src/PATH" n'est pas super car quand on deploie notre code React, l'image peut etre perdu (Image file ignored during bundling). 
 
-import reactImg from './assets/react-core-concepts.png';
 import componentsImg from './assets/components.png';
 
 // Tjrs avec {}  dans code car element dynamique 
 // ** 
 
-// Mon premier composant
-function Header(){
-
-  // On peut aussi mettre le calcul directement dans les {} mais recommender comme ceci pour garder un code plus propre et comprehensible
-  const description = reactDescriptions[generationNombreRandom(4)];
-  
-  return(
-    <header>
-    <img src={reactImg} alt="Stylized atom" />
-    <h1>React Essentials</h1>
-    <p>
-      {description} React concepts you will need for almost any app you are
-      going to build!
-
-      
-    </p>
-  </header>);
-}
-
-// "Props" ou on peut lui inclure des elements differents lorsqu'on reutilise cet element dynamique (props) = les parametres comme une fonction normale.
-// (props) = les parametres comme une fonction normale. Difference = Fonction normale a 1 pour chaque parametre, dans React, c'est 1 objet 
-function ConceptImportant(props){
-  return (
-    <li>
-      <img src = {props.image} alt = {props.title}></img>
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-}
-// Version optimiser Les {} dans () deconstruisent les parametres dans l'ordre de construction (voir data.js)
-function ConceptImportantOptimiser({image, title, description}){
-  return (
-    <li>
-      <img src = {image} alt = {title}></img>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-}
 // *** Autre facon de faire les props 
 // Directement importer qqch de deja pre-built
 import {CORE_CONCEPTS} from './data.js';
+// *** 
 
 function App() {
   return (
@@ -170,6 +124,13 @@ function App() {
 
         </ul>
           
+        </section>
+        
+        <section id="examples">
+          <h2> Examples </h2>
+          <menu>
+            <TabBouton>Components</TabBouton>
+          </menu>
         </section>
       </main>
       
