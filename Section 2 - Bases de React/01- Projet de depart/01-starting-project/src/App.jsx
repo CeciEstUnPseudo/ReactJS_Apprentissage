@@ -2,7 +2,7 @@
 import Header from './components/Header/Header.jsx';
 import ConceptImportant from './components/Conceptes/ConceptImp1.jsx';
 import ConceptImportantOptimiser from './components/Conceptes/ConceptImp2.jsx';
-import TabBouton from './components/TABBoutons/TABBoutons.jsx';
+import TabBoutons from './components/TABBoutons/TABBoutons.jsx';
 
 // ** Un meilleur moyen de load des images 
 // Chargement d'une image. Le src = "src/PATH" n'est pas super car quand on deploie notre code React, l'image peut etre perdu (Image file ignored during bundling). 
@@ -18,6 +18,11 @@ import {CORE_CONCEPTS} from './data.js';
 // *** 
 
 function App() {
+
+  function handleSelect(){
+    console.log("Hello world - onSelect works!");
+  }
+
   return (
     <div>
       <Header></Header>
@@ -129,8 +134,12 @@ function App() {
         <section id="examples">
           <h2> Examples </h2>
           <menu>
-            <TabBouton>Components</TabBouton>
+            <TabBoutons onSelect={handleSelect}> Components </TabBoutons>
+            <TabBoutons onSelect={handleSelect}> JSX </TabBoutons>
+            <TabBoutons onSelect={handleSelect}> Props </TabBoutons>
+            <TabBoutons onSelect={handleSelect}> state </TabBoutons>
           </menu>
+            Dynamic Content (Thing under buttons that change)
         </section>
       </main>
       

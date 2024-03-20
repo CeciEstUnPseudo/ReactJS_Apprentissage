@@ -6,12 +6,23 @@
 // La methode des labels est mieux avec plusieurs props 
 
 
-export default function boutons({children}){
+export default function Boutons({children, onSelect}){
     // props.children by default so always there. Its the text between the <>THE TEXT HERE</> Can be simple text or a complex structure
-    return 
-    (
+
+    // Built-in react attribut to button onClick (Lots of on(Something)) instead of the whole addEventListener('click')
+
+    //Function built in a function, only useable inside the parent function (like we do with variables). Common practice to call function that deal with on(Something) handle(ThingItHandles) (on for smt that will eventually be trigged by some event)
+    /*
+    function handleClick(){
+        console.log("Element was clicked!");
+    }
+    */
+
+
+    return (
         <li>
-            <button>{children}</button>
+            
+            <button onClick={onSelect}> {children} </button>
         </li>
     );
 }

@@ -21,6 +21,8 @@ export default function Header(){
     // On peut aussi mettre le calcul directement dans les {} mais recommender comme ceci pour garder un code plus propre et comprehensible
     const description = reactDescriptions[generationNombreRandom(4)];
     
+
+    // Make sure the first ( is on the same line as return so it takes everything inbetween the ()
     return(
         <header>
             <img src={reactImg} alt="Stylized atom" />
