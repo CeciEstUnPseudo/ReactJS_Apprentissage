@@ -17,10 +17,17 @@ import componentsImg from './assets/components.png';
 import {CORE_CONCEPTS} from './data.js';
 // *** 
 
+
+
+// In function App() theres those 
+// <TabBoutons onSelect={() => handleSelect('components')}> Components </TabBoutons>
+// The () => handleSelect('components') = Ghost function executed, how handleSelect is going to be called (it has () so its called from in the Ghost function) then the data its called with is 'components'. Its wrapped in another function so it wont get executed too early (Will only execute when activated) 
 function App() {
 
-  function handleSelect(){
-    console.log("Hello world - onSelect works!");
+  function handleSelect(buttonSelected){
+    // buttonSelected = The buttons (Components, JSX, Props, State) It'll be 1 of these 4 
+    // Now buttonSelected = the value put in () => handleSelect(THIS VALUE)
+    console.log(buttonSelected);
   }
 
   return (
@@ -134,10 +141,11 @@ function App() {
         <section id="examples">
           <h2> Examples </h2>
           <menu>
-            <TabBoutons onSelect={handleSelect}> Components </TabBoutons>
-            <TabBoutons onSelect={handleSelect}> JSX </TabBoutons>
-            <TabBoutons onSelect={handleSelect}> Props </TabBoutons>
-            <TabBoutons onSelect={handleSelect}> state </TabBoutons>
+            
+            <TabBoutons onSelect={() => handleSelect('components')}> Components </TabBoutons>
+            <TabBoutons onSelect={() => handleSelect('jsx')}> JSX </TabBoutons>
+            <TabBoutons onSelect={() => handleSelect('props')}> Props </TabBoutons>
+            <TabBoutons onSelect={() => handleSelect('state')}> state </TabBoutons>
           </menu>
             Dynamic Content (Thing under buttons that change)
         </section>
