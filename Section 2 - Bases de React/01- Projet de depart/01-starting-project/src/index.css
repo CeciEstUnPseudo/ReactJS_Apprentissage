@@ -106,6 +106,7 @@ main h2 {
   color: #ebe7ef;
 }
 
+/* L'ID du <div> qui contient les {EXAMPLES[]} dans App.jsx */
 #tab-content {
   padding: 1rem;
   border-radius: 6px;
