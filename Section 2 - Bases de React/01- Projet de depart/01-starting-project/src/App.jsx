@@ -36,7 +36,7 @@ function App() {
   // Ici je vais defaire l'array. Nommer selectedTopic et setSelectedTopic de par les conventions
   // Infos entre () apres useState = Celle de depart, selectedTopic vient la replacer quand executer. 
   // setSelectedTopic = Fonction qui update selectedTopic et dit a React de re-executer useState 
-  let [selectedTopic, setSelectedTopic ] = useState('components');
+  let [selectedTopic, setSelectedTopic ] = useState('');
 
   function handleSelect(buttonSelected){
     // buttonSelected = The buttons (Components, JSX, Props, State) It'll be 1 of these 4 
@@ -49,6 +49,7 @@ function App() {
 
   return (
     <div>
+      
       <Header></Header>
       <main>
         <h2>Time to get started!</h2>
@@ -158,26 +159,63 @@ function App() {
         <section id="examples">
           <h2> Examples </h2>
           <menu>
-            
-            <TabBoutons onSelect={() => handleSelect('components')}> Components </TabBoutons>
-            <TabBoutons onSelect={() => handleSelect('jsx')}> JSX </TabBoutons>
-            <TabBoutons onSelect={() => handleSelect('props')}> Props </TabBoutons>
-            <TabBoutons onSelect={() => handleSelect('state')}> state </TabBoutons>
+
+            <TabBoutons 
+              isSelected = {selectedTopic == 'components'} 
+              onSelect = {() => handleSelect('components')}
+            > Components </TabBoutons>
+
+            <TabBoutons 
+              isSelected = {selectedTopic == 'jsx'} 
+              onSelect = {() => handleSelect('jsx')}
+            > JSX </TabBoutons>
+
+            <TabBoutons 
+              isSelected = {selectedTopic == 'props'} 
+              onSelect = {() => handleSelect('props')}
+            > Props </TabBoutons>
+
+            <TabBoutons 
+            isSelected = {selectedTopic == 'state'} 
+            onSelect = {() => handleSelect('state')}
+            > state </TabBoutons>
+
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>
-                {EXAMPLES[selectedTopic].code}
-              </code>
-            </pre>
-          </div>
+          {!selectedTopic ? 
+            <p>Please select a topic</p> 
+          : 
+            ( 
+              <div id="tab-content">
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>
+                  <code>
+                    {EXAMPLES[selectedTopic].code}
+                  </code>
+                </pre>
+              </div>
+            )
+          }
+          
 
         </section>
       </main>
       
     </div>
+        /* Explication du isSelected = {selectedTopic == "qqch"} 
+            On check si isSelected = qqch (Donc le string unique (components, jsx, etc) au tabbouton)
+            Si oui (Donc TRUE), isSelected est TRUE. Dans TABBoutons, on check si {isSelected ? "active" : ""}
+            Donc si isSelected = true = si selectedTopic est celui du bouton, on donne la classe "active" au bouton
+        */
+        /* Explication du {!selectedTopic ? (1) : (2)} 
+          Meme qu'un IF statement. 
+          Traduction directe en mots: Si selectedTopic est null, affiche 1. Si il contient un element (true), affiche 2. (Sans le !, 2 serait afficher si selectedTopic est null/false, etc.)
+
+          Peut aussi faire des comparaisons: {selectedTopic === "rien" ? (1) : (2)}
+          Si selectedTopic = "rien", affiche 1. Sinon, affiche 2
+          ? = Le if () -->{<-- }
+          : = else 
+        */
   );
 }
 

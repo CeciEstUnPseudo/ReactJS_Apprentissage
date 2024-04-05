@@ -6,8 +6,8 @@
 // La methode des labels est mieux avec plusieurs props 
 
 
-export default function Boutons({children, onSelect}){
-    // props.children by default so always there. Its the text between the <>THE TEXT HERE</> Can be simple text or a complex structure
+export default function Boutons({children, onSelect, isSelected}){
+    // props.children by default so always there. Its the text between the <>THE TEXT HERE</> Can be simple text or a complex structure. Used as the text on the visible buttons.
 
     // Built-in react attribut to button onClick (Lots of on(Something)) instead of the whole addEventListener('click')
 
@@ -18,11 +18,12 @@ export default function Boutons({children, onSelect}){
     }
     */
 
+    // className expliquer dans App.jsx
+    console.log("Children ="+children);
 
     return (
         <li>
-            
-            <button onClick={onSelect}> {children} </button>
+            <button className = {isSelected ? "active" : ""} onClick={onSelect}> {children} </button>
         </li>
     );
 }
