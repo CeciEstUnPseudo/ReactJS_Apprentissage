@@ -54,7 +54,7 @@ function App() {
       <main>
         <h2>Time to get started!</h2>
 
-        <section id = "core-concepts">
+        {/* <section id = "core-concepts">
         <h2>Concepte Props (elements dynamiques customisables) </h2>
         <ul>
 
@@ -154,6 +154,18 @@ function App() {
 
         </ul>
           
+        </section> */}
+
+        <section id = "core-concepts">
+        <h2>Concepte props avec elements dynamiquement mis (Si on en enleve 1 de CORE_CONCEPTS, ca ne brise pas. Aussi importation d'element dynamique (CORE_CONCEPTS),  + elements dynamique optimiser ) </h2>
+        <ul>
+          {CORE_CONCEPTS.map((elementDeCoreConcepts)=> (
+              <ConceptImportantOptimiser key={elementDeCoreConcepts.title}
+              {...elementDeCoreConcepts}
+              ></ConceptImportantOptimiser>
+          ))}
+        </ul>
+          
         </section>
         
         <section id="examples">
@@ -179,7 +191,7 @@ function App() {
             isSelected = {selectedTopic == 'state'} 
             onSelect = {() => handleSelect('state')}
             > state </TabBoutons>
-
+ 
           </menu>
           {!selectedTopic ? 
             <p>Please select a topic</p> 
